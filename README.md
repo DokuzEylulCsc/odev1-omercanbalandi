@@ -1,4 +1,12 @@
-# Ödev 1
+# BIL1001 - Ödev1
+
+- Ömercan Balandı
+- 2018280065
+
+Canlı Demo: https://omercanbalandi.github.io/assignments/1/
+
+
+
 Dönemin ilk ödevi için, klasörde HTML dosyası olarak verilmiş web sayfası içerisinde,
 1.	“Topla” düğmesine basınca “Metin Kutusu 1“ ve “Metin Kutusu 2” içerisine yazılmış iki sayıyı toplayarak sonucu “alert()” metodunu kullanarak ekrana çıkaran JavaScript kodunu yazınız. 
 2.	“Yapıştır” düğmesine basınca “Metin Kutusu 3“ ve “Metin Kutusu 4” içerisine yazılmış iki metin değerini birleştirerek sonucu “alert()” metodunu kullanarak ekrana çıkaran JavaScript kodunu yazınız.

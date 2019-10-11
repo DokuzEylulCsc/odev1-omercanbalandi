@@ -1,21 +1,111 @@
+<!--
+    Ömercan Balandı
+    2018280065
+
+    Her bir ödev görevi ile ilgili kısım numaralandırılarak belirtilmiştir.
+-->
+
 <!DOCTYPE html>
 <html>
-<body>
-<h2>2019 G�z D�neminin ilk �devi</h2>
-<label for="id1">Metin kutusu 1</label>
-<input type='text' id='id1' /> 
-<br>
-<label for="id2">Metin kutusu 2</label>
-<input type='text' id='id2' /> 
-<br><br>
-<button type="button">Topla</button>
-<br><br>
-<label for="id3">Metin kutusu 3</label>
-<input type='text' id='id3' /> 
-<br>
-<label for="id4">Metin kutusu 4</label>
-<input type='text' id='id4' /> 
-<br><br>
-<button type="button">Yap��t�r</button>
-</body>
+    <head>
+        <title>Ömercan Balandı - 2018280065</title>
+
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+
+            .warning {
+                width: 250px;
+                padding: 10px;
+                background-color: #fffc9c;
+                border: 1px solid #ffd400;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h2>2019 Güz Döneminin ilk ödevi</h2>
+        <h4>Ömercan Balandı - 2018280065</h4>
+
+        <label for="id1">Metin kutusu 1</label>
+        <input type='text' class="numberInput" id='id1' />
+        <br>
+
+        <label for="id2">Metin kutusu 2</label>
+        <input type='text' class="numberInput" id='id2' />
+        <br><br>
+
+        <div id="warningContainer"></div><br>
+        <button type="button" id="button1">Topla</button>
+        <br><br>
+
+        <label for="id3">Metin kutusu 3</label>
+        <input type='text' class="textInput" id='id3' />
+        <br>
+
+        <label for="id4">Metin kutusu 4</label>
+        <input type='text' class="textInput" id='id4' />
+        <br><br>
+
+        <button type="button" id="button2">Yapıştır</button>
+
+        <script>
+            // Task #1
+            // 1. “Topla” düğmesine basınca “Metin Kutusu 1“ ve “Metin Kutusu 2” içerisine yazılmış iki sayıyı
+            // toplayarak sonucu “alert()” metodunu kullanarak ekrana çıkaran JavaScript kodunu yazınız.
+
+            const numberInputs = Array.from(document.querySelectorAll(".numberInput"));
+            const button1 = document.querySelector("#button1");
+
+            const warningContainer = document.querySelector("#warningContainer");
+            const warningTemplate = '<div class="warning">Lütfen sadece nümerik değerler giriniz.</div>';
+
+            button1.addEventListener("click", function() {
+                let sum = 0;
+                numberInputs.forEach(element => sum += parseInt(element.value));
+                if (Number.isNaN(sum)) warningContainer.innerHTML = warningTemplate;
+                else alert(sum);
+            });
+
+            // Task #4
+            // 4. (+1 puan bonus) İlk maddedeki toplama işleminin yapıldığı metin kutularına sadece nümerik
+            // karakterler (0, 1, 2, vb. sadece rakam) girilebilmesini sağlayan JavaScript kodunu ekleyiniz.
+
+            const allowedKeyEvents = ["Tab", "Backspace", "ArrowLeft", "ArrowRight"];
+
+            numberInputs.forEach(numberInput => {
+                numberInput.addEventListener("keydown", function(event) {
+                    warningContainer.innerHTML= "";
+
+                    let key = event.key;
+
+                    if (allowedKeyEvents.indexOf(key) == -1 && !event.ctrlKey && Number.isNaN(parseInt(key))) {
+                        event.preventDefault();
+                        warningContainer.innerHTML = warningTemplate;
+                    }
+                });
+
+                numberInput.addEventListener("blur", function() {
+                    warningContainer.innerHTML= "";
+                });
+            });
+
+            // Task #3
+            // 2. “Yapıştır” düğmesine basınca “Metin Kutusu 3“ ve “Metin Kutusu 4” içerisine yazılmış iki
+            // metin değerini birleştirerek sonucu “alert()” metodunu kullanarak ekrana çıkaran JavaScript
+            // kodunu yazınız.
+
+            const textInputs = Array.from(document.querySelectorAll(".textInput"));
+            const button2 = document.querySelector("#button2");
+
+            button2.addEventListener("click", function() {
+                let text = "";
+                textInputs.forEach(element => text += element.value + " ");
+                alert(text);
+            });
+
+        </script>
+    </body>
+
 </html>
